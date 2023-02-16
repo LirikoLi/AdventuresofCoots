@@ -1,0 +1,267 @@
+define l = Character("Ludwig")
+define c = Character("Coots")
+define q = Character("QT")
+define n = Character("")
+
+
+# The game starts here.
+
+label start:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg room
+
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    show ludwig
+
+    play music "audio/intro.mp3" fadein 1.0 volume 0.2
+
+    # These display lines of dialogue.
+
+    l "BOYS! Today, the PLAN IS SIMPLE"
+
+    l "We'll be using Coots, to farm more content!"
+    
+label choices3:
+        "Do you run away?"
+        menu:
+            "Run away from the short man":
+                jump leave
+            "Stay on stream":
+                jump stay
+
+label stay:
+    stop music fadeout .5
+    play music "audio/lud.mp3" fadein 1.0 volume 0.2
+    scene badend
+    "BAD ENDING!: You stay having to stream with Ludwig, forever!"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+
+    
+label leave:
+    scene bg room
+    c "*runs out of room*"
+
+    l "Wait Coots!"
+
+    stop music fadeout 0.5
+    play music "audio/redo.mp3" fadein 1.0 volume 0.2
+
+    scene kitchen
+
+    show qt
+
+    c "*runs in*"
+
+    q "Awhh hi Coots!"
+
+    q "Do you wanna stay on my stream?"
+label choices4:
+    menu: 
+        "Bake cake":
+            jump cakend
+        "Leave":
+            jump run
+label cakend:
+    scene cakend
+    "CAKE ENDING: You stay and bake a cake!"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+label run:
+    scene kitchen
+    c "*runs out*"
+    stop music fadeout 0.5
+    play music "audio/kim.mp3" fadein 1.0 volume 0.2
+    scene street1
+
+    n "The air feels nice, it's warm outside."
+    n "First time you've been let out of the stream room in a while"
+
+label choices:
+    "Will you go to Right? or Left?."
+    menu:
+        "Right":
+            jump alleya
+        "Left":
+            jump alleyb
+
+
+label alleya:
+    scene alleya
+
+    n "Oh isn't that a sight"
+label choices2:
+    "You hear a meow from the side of the alley, do you check it out?"
+    menu:
+        "Check out the meow":
+            jump cats
+        "Keep going":
+            jump park
+
+label cats:
+    scene cats1
+    n "Oh a group of cats"
+label choices5: 
+    "They offer you food, do you accept?"
+    menu:
+        "Eat food":
+            jump orange
+        "Leave":
+            jump park
+
+label orange:
+    scene orangecat
+    stop music fadeout 0.5
+    play music "audio/hope.mp3" fadein 1.0 volume 0.2
+    "An aggressive looking cat eppears!"
+    "It attacks!"
+
+    scene fight
+    "It lands the first hit!"
+label choices6:
+    "Do you fight back?"
+    menu:
+        "Kick the Orange Cat's Butt!":
+            jump fight2
+        "Run like the wind!":
+            jump pacifist
+            
+
+label pacifist:
+    stop music fadeout 0.5
+    play music "audio/frog.mp3" fadein 1.0 volume 0.2
+    scene war 
+    "You run away become a healing mage for the cat war of 2023!"
+    scene mage
+    "Pacifist Ending!: You become a healing mage and help the world through their troubles"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+label fight2:
+    scene fight2
+    "You strike back!"
+    scene fight3
+    "You manage to get it cornered!"
+    scene catlose
+    "You beat the orange cat and good the food!"
+    scene warrior
+    "WARRIOR ENDING: You beat the other cat and get the spoils, congratulations!"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+
+label park:
+    scene park
+    "You keep going"
+    n "You find yourself in a park"
+label choices7:
+    "What do you want to do?"
+    menu:
+        "Take a cat nap":
+            jump nap
+        "Keep exploring":
+            jump explore
+
+label nap:
+    scene nap
+    "Nap Ending: You take a nice nap and enjoy the sun"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+
+label explore:
+    stop music fadeout 0.5
+    play music "audio/exp.mp3" fadein 1.0 volume 0.2
+    scene space
+    "Stories of a young wandering cat named Coots spread"
+    scene expend
+    "Explorer Ending: You travel the world meeting all kinds of new people"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+    
+            
+
+label alleyb:
+    scene alleyb
+    n "What now?"
+label choices8:
+    menu:
+        "Hang out with the other cats":
+            jump cats2
+        "Follow your cat dreams":
+            jump hollywood
+        "Meet a friend":
+            jump friend
+
+
+label friend:
+    scene friend
+    stop music fadeout 0.5
+    play music "audio/redo.mp3" fadein 1.0 volume 0.2
+    "You make a friend and you guys decide to make a treehouse"
+    scene treehouse
+    "Friend Ending: You live happily ever after in your treehouse watching Ludwig's streams"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+
+label hollywood:
+    stop music fadeout 0.5
+    play music "audio/van.mp3" fadein 1.0 volume 0.2
+    scene hollywood
+    "You go to hollywood after traveling for a very long time!"
+    scene movie
+    "Moviestar Ending!: You become revered for your excellent acting skills, who needs Ludwig when your famous."
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+
+
+label cats2:
+    scene cats2
+    play music "audio/king.mp3" fadein 1.0 volume 0.2
+    "You decide to hangout with the other cats"
+    "They make you their leader"
+    scene king
+    "King Ending!: You become the cat king!"
+    menu: 
+        "Play again?":
+            jump start
+        "No":
+            jump end
+
+    # This ends the game.
+label end:
+    scene street1
+    stop music fadeout 0.5
+    play music "audio/end.mp3" fadein 1.0 volume 0.2
+    "Thank you for playing!"
+    "Made with Ren'Py"
+
+    return
